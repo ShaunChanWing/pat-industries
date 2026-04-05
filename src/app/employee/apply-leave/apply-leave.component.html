@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h2>Apply for Leave</h2>
+
+  <label>Leave Type</label>
+  <select [(ngModel)]="type">
+    <option>Annual</option>
+    <option>Sick</option>
+    <option>Family Responsibility</option>
+  </select>
+
+  <label>Start Date</label>
+  <input type="date" [(ngModel)]="startDate">
+
+  <label>End Date</label>
+  <input type="date" [(ngModel)]="endDate">
+
+  <label>Reason</label>
+  <textarea [(ngModel)]="reason"></textarea>
+
+  <button (click)="apply()">Submit</button>
+
+</div>

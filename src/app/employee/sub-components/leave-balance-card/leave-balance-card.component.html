@@ -1,0 +1,21 @@
+<div class="leave-card" *ngIf="leaveBalance() as lb; else loading">
+
+  <h3>Leave Balance</h3>
+
+  <p><strong>Total Allowance:</strong> {{ lb.allowance }}</p>
+  <p><strong>Used:</strong> {{ lb.used }}</p>
+  <p><strong>Remaining:</strong> {{ lb.remaining }}</p>
+
+  <!-- 🔥 Visual bar -->
+  <div class="progress-bar">
+    <div 
+      class="progress-fill"
+      [style.width.%]="(lb.used / lb.allowance) * 100">
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <p>Loading leave balance...</p>
+</ng-template>

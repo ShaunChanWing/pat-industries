@@ -1,0 +1,39 @@
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #121212;
+  border-radius: 10px;
+  color: white;
+}
+
+h2 {
+  color: #ff6600;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

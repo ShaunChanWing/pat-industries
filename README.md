@@ -57,3 +57,12 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+still to do 
+
+🔐 Role-based access (admin vs employee)
+👤 Attach leave to logged-in user
+📊 Leave balance tracking
+🎨 Use Angular Material UI
+🔒 Proper Firestore security rules

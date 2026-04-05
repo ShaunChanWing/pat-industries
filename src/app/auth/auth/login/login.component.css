@@ -1,0 +1,85 @@
+/* Background */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+  font-family: Arial, sans-serif;
+}
+
+/* Card */
+.login-card {
+  background: #121212;
+  padding: 40px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.2);
+  border: 1px solid #2f2f2f;
+}
+
+/* Logo */
+.logo {
+  width: 220px;
+  margin-bottom: 20px;
+  border-radius: 10%;
+}
+
+/* Title */
+h2 {
+  color: #ff6600;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+}
+
+/* Buttons */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #e65c00;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: #ff6600;
+  border: 1px solid #ff6600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: #ff6600;
+  color: white;
+}

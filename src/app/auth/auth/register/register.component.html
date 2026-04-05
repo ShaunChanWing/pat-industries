@@ -1,0 +1,29 @@
+<div class="register-container">
+  <div class="register-card">
+
+    <img src="assets/images/Pat_Industries_Logo.png" class="logo">
+
+    <h2>Employee Registration</h2>
+
+    <input [(ngModel)]="email" placeholder="Email">
+    <input [(ngModel)]="password" type="password" placeholder="Password">
+
+    <input [(ngModel)]="name" placeholder="First Name">
+    <input [(ngModel)]="surname" placeholder="Surname">
+
+    <input [(ngModel)]="dob" type="date">
+
+    <input [(ngModel)]="idNumber" placeholder="ID Number">
+
+    <input [(ngModel)]="taxNumber" placeholder="Tax Number (Optional)">
+
+    <textarea [(ngModel)]="address" placeholder="Home Address"></textarea>
+    
+    <input [(ngModel)]="emergencyContactName" placeholder="Emergency Contact Name">
+
+    <input [(ngModel)]="emergencyContactNumber" placeholder="Emergency Contact Number">
+
+    <button class="register-btn" (click)="register()">Register</button>
+
+  </div>
+</div>

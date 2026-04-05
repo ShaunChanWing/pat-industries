@@ -1,0 +1,13 @@
+<h1>Employee</h1>
+<div class="summary" *ngIf="employee() as emp; else loading">
+
+  <p><strong>Name:</strong> {{ emp.name }} {{ emp.surname }}</p>
+
+  <p><strong>Email:</strong> {{ emp.email }}</p>
+
+  <p><strong>ID:</strong> {{ emp.idNumber }}</p>
+
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

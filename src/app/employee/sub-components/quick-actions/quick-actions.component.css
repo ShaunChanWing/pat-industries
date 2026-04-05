@@ -1,0 +1,14 @@
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  background: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

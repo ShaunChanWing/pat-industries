@@ -1,0 +1,22 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- Logo -->
+    <img src="assets/images/Pat_Industries_Logo.png" alt="PAT Industries Logo" class="logo">
+
+    <h2>Employee Login</h2>
+
+    <div class="form-group">
+      <input [(ngModel)]="email" placeholder="Email" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="password" type="password" placeholder="Password" />
+    </div>
+
+    <button class="login-btn" (click)="login()">Login</button>
+
+    <button class="register-btn" (click)="register()">Register</button>
+
+  </div>
+</div>

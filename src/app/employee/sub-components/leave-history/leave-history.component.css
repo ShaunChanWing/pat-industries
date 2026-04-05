@@ -1,0 +1,19 @@
+.history {
+  background: #121212;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.approved {
+  color: lightgreen;
+}
+
+.pending {
+  color: orange;
+}
