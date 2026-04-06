@@ -17,3 +17,18 @@
 .pending {
   color: orange;
 }
+
+.delete-btn {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background: #f44336;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+}

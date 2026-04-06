@@ -1,8 +1,10 @@
 export interface LeaveRequest {
   id?: string;
+  type: string;
   startDate: string;
   endDate: string;
-  reason: string;
-  status: 'pending' | 'approved' | 'rejected';
-  createdAt: Date;
+  days: number;
+  status: string;
+  reason?: string;
+  userId: string;
 }

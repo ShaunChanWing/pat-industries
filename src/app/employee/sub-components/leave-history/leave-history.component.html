@@ -1,14 +1,35 @@
 <div class="history">
-  <h3>Recent Leave Requests</h3>
 
-  <div class="item">
-    <p>Annual Leave - 3 Days</p>
-    <span class="approved">Approved</span>
-  </div>
+  <h3>Leave History</h3>
 
-  <div class="item">
-    <p>Sick Leave - 1 Day</p>
-    <span class="pending">Pending</span>
+  <div *ngIf="leaves$ | async as leaves">
+
+    <div *ngIf="leaves.length === 0">
+      No leave requests yet.
+    </div>
+
+    <div *ngFor="let leave of leaves" class="item">
+
+      <div>
+        <strong>{{ leave.type }}</strong><br>
+        {{ leave.startDate }} → {{ leave.endDate }} ({{ leave.days }} days)
+      </div>
+
+      <div [ngClass]="leave.status.toLowerCase()">
+        {{ leave.status }}
+      </div>
+
+      
+      <!-- 🔥 Show only if Pending -->
+      <button 
+        *ngIf="leave.status === 'pending' && leave.id"
+        class="delete-btn"
+        (click)="deleteLeave(leave.id)">
+        Delete
+      </button>
+
+    </div>
+
   </div>
 
 </div>

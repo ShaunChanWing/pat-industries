@@ -11,7 +11,42 @@ h1 {
 }
 
 .cards {
-  display: flex;
+  /* display: ; */
   gap: 15px;
   margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 🔥 Logo styling */
+.logo {
+  width: 150px;
+  /* height: 50px; */
+  object-fit: contain;
+  border-radius: 30px; /* optional rounded look */
+}
+
+.logout-btn {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background: #e65c00;
 }

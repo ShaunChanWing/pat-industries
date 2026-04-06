@@ -1,6 +1,19 @@
 <div class="dashboard">
 
-  <h1>Welcome back 👋</h1>
+  <div class="header">
+
+    <!-- LEFT: Logo + Title -->
+    <div class="header-left">
+      <img src="assets/images/Pat_Industries_Logo.png" class="logo" alt="PAT Logo">
+      <h1>Employee Portal</h1>
+    </div>
+
+    <!-- RIGHT: Logout -->
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+
+  </div>
 
   <!-- Profile Summary -->
   <app-employee-summary></app-employee-summary>

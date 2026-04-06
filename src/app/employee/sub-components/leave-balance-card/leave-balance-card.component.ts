@@ -21,30 +21,46 @@ export class LeaveBalanceCardComponent {
   private employeeService = inject(EmployeeService);
   private leaveService = inject(LeaveService);
 
-  leaveBalance = toSignal(
-    this.auth.user$.pipe(
-      switchMap(user => {
-        if (!user) return of(null);
+leaveBalance = toSignal(
+  this.auth.user$.pipe(
+    switchMap(user => {
+      if (!user) return of(null);
 
-        return combineLatest([
-          this.employeeService.getEmployee(user.uid),
-          this.leaveService.getApprovedLeave(user.uid)
-        ]).pipe(
-          map(([employee, leaves]) => {
-            if (!employee) return null;
+      return combineLatest([
+        this.employeeService.getEmployee(user.uid),
+        this.leaveService.getApprovedLeave(user.uid)
+      ]).pipe(
+        map(([employee, leaves]) => {
+          if (!employee) return null;
 
-            const used = leaves.reduce((sum: number, l: any) => sum + (l.days || 0), 0);
-            const allowance = employee.leaveAllowance ?? 15;
+        const allowances = {
+          Annual:  15,
+          Sick: 30,
+          Family:  3,
+          Maternity: 120,   // 👶 typical ~4 months
+          Paternity:  10     // 👨 typical ~10 days
+        };
 
-            return {
+          const result: any = {};
+
+          Object.keys(allowances).forEach(type => {
+            const typeLeaves = leaves.filter((l: any) => l.type === type);
+
+            const used = this.leaveService.calculateUsedDays(typeLeaves);
+            const allowance = allowances[type as keyof typeof allowances];
+
+            result[type] = {
               allowance,
               used,
-              remaining: allowance - used
+              remaining: Math.max(0, allowance - used)
             };
-          })
-        );
-      })
-    ),
-    { initialValue: null }
-  );
+          });
+
+          return result;
+        })
+      );
+    })
+  ),
+  { initialValue: null }
+);
 }

@@ -1,17 +1,59 @@
-<div class="leave-card" *ngIf="leaveBalance() as lb; else loading">
+<div *ngIf="leaveBalance() as lb; else loading">
 
   <h3>Leave Balance</h3>
 
-  <p><strong>Total Allowance:</strong> {{ lb.allowance }}</p>
-  <p><strong>Used:</strong> {{ lb.used }}</p>
-  <p><strong>Remaining:</strong> {{ lb.remaining }}</p>
+  <div class="leave-grid">
 
-  <!-- 🔥 Visual bar -->
-  <div class="progress-bar">
-    <div 
-      class="progress-fill"
-      [style.width.%]="(lb.used / lb.allowance) * 100">
+    <div class="leave-type">
+      <h4>Annual</h4>
+      <p>Used: {{ lb.Annual.used }} / {{ lb.Annual.allowance }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill"
+             [style.width.%]="(lb.Annual.used / lb.Annual.allowance) * 100">
+        </div>
+      </div>
     </div>
+
+    <div class="leave-type">
+      <h4>Sick</h4>
+      <p>Used: {{ lb.Sick.used }} / {{ lb.Sick.allowance }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill"
+             [style.width.%]="(lb.Sick.used / lb.Sick.allowance) * 100">
+        </div>
+      </div>
+    </div>
+
+    <div class="leave-type">
+      <h4>Family Responsibility</h4>
+      <p>Used: {{ lb.Family.used }} / {{ lb.Family.allowance }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill"
+             [style.width.%]="(lb.Family.used / lb.Family.allowance) * 100">
+        </div>
+      </div>
+    </div>
+
+    <div class="leave-type">
+      <h4>👶 Maternity</h4>
+      <p>Used: {{ lb.Maternity.used }} / {{ lb.Maternity.allowance }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill"
+            [style.width.%]="(lb.Maternity.used / lb.Maternity.allowance) * 100">
+        </div>
+      </div>
+    </div>
+
+    <div class="leave-type">
+      <h4>👨 Paternity</h4>
+      <p>Used: {{ lb.Paternity.used }} / {{ lb.Paternity.allowance }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill"
+            [style.width.%]="(lb.Paternity.used / lb.Paternity.allowance) * 100">
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
