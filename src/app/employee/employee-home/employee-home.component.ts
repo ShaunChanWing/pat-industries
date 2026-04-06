@@ -24,8 +24,18 @@ export class EmployeeHomeComponent implements OnInit {
   logout() {
     this.auth.logout().then(() => {
       this.router.navigate(['/login']);
-  });
-  
-  
+    });
+  }
+
+  async goToAdmin() {
+    const user = await this.auth.getCurrentUser();
+
+    if (!user) return;
+
+    const userData = await this.auth.getUserData(user.uid);
+
+    if (userData?.['role'] === 'admin') {
+      this.router.navigate(['/admin']);
+    } 
   }
 }

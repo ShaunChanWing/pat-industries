@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, serverTimestamp,query, where,doc , deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, serverTimestamp,query, where,doc , deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { LeaveRequest } from '../models/leave.model';
@@ -141,33 +141,59 @@ export class LeaveService {
     return deleteDoc(ref);
   }
 
-async getLeaveBalance(uid: string): Promise<any> {
-  const leaves = await firstValueFrom(this.getApprovedLeave(uid));
+  async getLeaveBalance(uid: string): Promise<any> {
+    const leaves = await firstValueFrom(this.getApprovedLeave(uid));
 
-  const allowances = {
-    Annual: 15,
-    Sick: 30,
-    Family: 3,
-    Maternity: 120,
-    Paternity: 10
-  };
-
-  const result: any = {};
-
-  for (const type of Object.keys(allowances)) {
-
-    const typeLeaves = leaves.filter((l: any) => l.type === type);
-
-    const used = this.calculateUsedDays(typeLeaves);
-    const allowance = allowances[type as keyof typeof allowances];
-
-    result[type] = {
-      allowance,
-      used,
-      remaining: Math.max(0, allowance - used)
+    const allowances = {
+      Annual: 15,
+      Sick: 30,
+      Family: 3,
+      Maternity: 120,
+      Paternity: 10
     };
+
+    const result: any = {};
+
+    for (const type of Object.keys(allowances)) {
+
+      const typeLeaves = leaves.filter((l: any) => l.type === type);
+
+      const used = this.calculateUsedDays(typeLeaves);
+      const allowance = allowances[type as keyof typeof allowances];
+
+      result[type] = {
+        allowance,
+        used,
+        remaining: Math.max(0, allowance - used)
+      };
+    }
+
+    return result;
   }
 
-  return result;
-}
+  getPendingLeaves() {
+    const ref = collection(this.firestore, 'leaveRequests');
+
+    const q = query(ref, where('status', '==', 'pending'));
+
+    return collectionData(q, { idField: 'id' });
+  }
+
+  updateLeaveStatus(id: string, status: 'approved' | 'rejected') {
+    const ref = doc(this.firestore, `leaveRequests/${id}`);
+    return updateDoc(ref, { status });
+  }
+
+
+  getUpcomingApprovedLeaves() {
+    const ref = collection(this.firestore, 'leaveRequests');
+
+    const q = query(
+      ref,
+      where('status', '==', 'approved')
+    );
+
+    return collectionData(q, { idField: 'id' });
+  }
+  
 }

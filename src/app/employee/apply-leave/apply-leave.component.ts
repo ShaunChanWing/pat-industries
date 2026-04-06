@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { EmployeeService } from '../../core/services/employee.service';
 
 @Component({
   selector: 'app-apply-leave',
@@ -26,7 +27,8 @@ export class ApplyLeaveComponent {
     private leaveService: LeaveService,
     private auth: AuthService,
     private router: Router,
-    private dialogRef: MatDialogRef<ApplyLeaveComponent>
+    private dialogRef: MatDialogRef<ApplyLeaveComponent>,
+    private employeeService: EmployeeService
   ) {}
 
 async apply() {
@@ -75,12 +77,20 @@ async apply() {
       return;
     }
 
+    
+
+   const employee = await firstValueFrom( this.employeeService.getEmployee(user.uid))
+
     await this.leaveService.applyLeave(user.uid, {
       type: this.type,
       startDate: this.startDate,
       endDate: this.endDate,
       days,
-      reason: this.reason
+      reason: this.reason,
+
+      // 🔥 ADD THIS
+      name: employee.name,
+      surname: employee.surname
     });
 
     alert('Leave applied successfully!');

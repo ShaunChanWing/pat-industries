@@ -36,7 +36,8 @@ export class RegisterComponent {
         taxNumber: this.taxNumber || null, // optional
         address: this.address,
         emergencyContactName: this.emergencyContactName,
-      emergencyContactNumber: this.emergencyContactNumber
+        emergencyContactNumber: this.emergencyContactNumber,
+        role: 'employee'
       });
 
       alert('Registration Successfull!, You are being redirected to the the Login Page ,Please login with your email an Password');

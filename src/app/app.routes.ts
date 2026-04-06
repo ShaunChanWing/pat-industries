@@ -5,6 +5,8 @@ import { LoginComponent } from './auth/auth/login/login.component';
 import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component';
 import { RegisterComponent } from './auth/auth/register/register.component';
 import { ApplyLeaveComponent } from './employee/apply-leave/apply-leave.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminGuard } from './auth/auth/guards/adminGuard';
 
 
 export const routes: Routes = [
@@ -23,6 +25,8 @@ export const routes: Routes = [
   
   
   
-  //Admin
-  // { path: 'admin', component: ApprovalsComponent }
+  // Admin
+  { path: 'admin', component: AdminDashboardComponent,
+    canActivate: [AdminGuard]
+  }
 ];

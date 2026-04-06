@@ -7,7 +7,7 @@ import {
   authState,
   User
 } from '@angular/fire/auth';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -42,5 +42,10 @@ export class AuthService {
 
   getCurrentUser() {
     return this.auth.currentUser;
+  }
+
+  getUserData(uid: string) {
+  const ref = doc(this.firestore, `employees/${uid}`);
+    return getDoc(ref).then(doc => doc.data());
   }
 }

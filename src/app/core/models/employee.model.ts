@@ -5,4 +5,5 @@ export interface Employee {
   email: string;
   idNumber: string;
   leaveAllowance?: number;
+  role: string;
 }

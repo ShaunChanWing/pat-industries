@@ -1,0 +1,141 @@
+<div class="header-banner">
+
+    <!-- LEFT: Logo + Title -->
+    <div class="header-banner-left">
+      <img src="assets/images/Pat_Industries_Logo.png" class="logo" alt="PAT Logo">
+      <h1>Admin Portal</h1>
+    </div>
+
+    <!-- RIGHT: Logout -->
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+
+  </div>
+<div class="admin-dashboard">
+
+
+  <h2>🧑‍💼 Pending Leave Approvals</h2>
+
+  <div *ngIf="leaves$ | async as leaves">
+
+    <div *ngIf="leaves.length === 0">
+    {{ activeTab === 'pending' 
+        ? 'No pending requests 🎉' 
+        : 'No upcoming approved leave 👌' }}
+    </div>
+
+        <div class="table">
+
+        <div class="row header">
+            <div>Employee</div>
+            <div>Type</div>
+            <div>Dates</div>
+            <div>Days</div>
+            <div>Reason</div>
+            <div>Actions</div>
+        </div>
+
+        <div class="row" *ngFor="let leave of leaves">
+
+            <div>
+                {{ leave.name }} {{ leave.surname }}
+            </div>
+
+            <div>{{ leave.type }}</div>
+
+            <div>
+            {{ leave.startDate }} → {{ leave.endDate }}
+            </div>
+
+            <div>{{ leave.days }}</div>
+
+            <div>{{ leave.reason }}</div>
+
+            <div class="actions">
+            <button class="approve" (click)="approve(leave.id)">Approve</button>
+            <button class="reject" (click)="reject(leave.id)">Reject</button>
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="admin-dashboard">
+    <h2 style="margin-top: 40px;">✅ Upcoming Approved Leave</h2>
+
+<div *ngIf="approvedLeaves$ | async as leaves">
+
+  <div *ngIf="leaves.length === 0">
+    No upcoming approved leave 👌
+  </div>
+
+  <div class="table">
+
+    <div class="row header">
+      <div>Employee</div>
+      <div>Type</div>
+      <div>Dates</div>
+      <div>Days</div>
+      <div>Reason</div>
+      <div>Actions</div>
+    </div>
+
+    <div class="row" *ngFor="let leave of leaves">
+
+      <div>{{ leave.name }} {{ leave.surname }}</div>
+      <div>{{ leave.type }}</div>
+      <div>{{ leave.startDate }} → {{ leave.endDate }}</div>
+      <div>{{ leave.days }}</div>
+      <div>{{ leave.reason }}</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="admin-dashboard">
+
+    <h2 style="margin-top: 40px;">👥 Employee Directory</h2>
+
+<div class="accordion-container">
+
+  <div *ngFor="let emp of employees; let i = index" class="accordion">
+
+    <!-- HEADER -->
+    <div class="accordion-header" (click)="toggleEmployee(i)">
+      👤 {{ emp.name }} {{ emp.surname }}
+      <span>{{ openEmployeeIndex === i ? '▲' : '▼' }}</span>
+    </div>
+
+    <!-- BODY -->
+    <div class="accordion-body" *ngIf="openEmployeeIndex === i">
+
+      <div class="grid">
+
+        <div><strong>Date of Birth:</strong> {{ emp.dob }}</div>
+        <div><strong>ID Number:</strong> {{ emp.idNumber }}</div>
+        <div><strong>Tax Number:</strong> {{ emp.taxNumber || 'N/A' }}</div>
+        <div><strong>Role:</strong> {{ emp.role }}</div>
+
+        <div class="full"><strong>Address:</strong> {{ emp.address }}</div>
+
+        <div><strong>Emergency Contact:</strong> {{ emp.emergencyContactName }}</div>
+        <div><strong>Contact Number:</strong> {{ emp.emergencyContactNumber }}</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>

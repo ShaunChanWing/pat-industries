@@ -1,0 +1,144 @@
+.admin-dashboard {
+  padding: 20px;
+  color: white;
+background-color: #3b4046;
+}
+
+h2 {
+  color: #ff6600;
+  margin-bottom: 20px;
+}
+
+/* Table layout */
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: grid;
+   grid-template-columns: 2fr 1fr 2fr 0.5fr 2fr 1.5fr;
+  padding: 12px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.header {
+  background: #2a2a2a;
+  font-weight: bold;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.approve {
+  background: #4caf50;
+  color: white;
+}
+
+.approve:hover {
+  background: #43a047;
+}
+
+.reject {
+  background: #f44336;
+  color: white;
+}
+
+.reject:hover {
+  background: #d32f2f;
+}
+
+
+
+.header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #2a2a2a;
+}
+
+.header-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 🔥 Logo styling */
+.logo {
+  width: 120px;
+  /* height: 50px; */
+  object-fit: contain;
+  border-radius: 30px; /* optional rounded look */
+}
+
+.logout-btn {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background: #e65c00;
+}
+
+h1 {
+  color: #ff6600;
+  margin-bottom: 20px;
+}
+
+
+.accordion-container {
+  margin-top: 20px;
+}
+
+.accordion {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.accordion-body {
+  background: #2b2b2b;
+  padding: 15px;
+  color: #ddd;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid .full {
+  grid-column: span 2;
+}
