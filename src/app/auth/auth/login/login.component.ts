@@ -19,7 +19,7 @@ export class LoginComponent {
   async login() {
     try {
       await this.auth.login(this.email, this.password);
-      alert('Logged in!');
+      // alert('Logged in!');
       this.router.navigate(['/employee-home'])
     } catch (e) {
       console.error('Login error : ' , e)
@@ -30,4 +30,19 @@ export class LoginComponent {
   register() {
     this.router.navigate(['/register'])
   }
+
+  async forgotPassword() {
+  if (!this.email) {
+    alert('Please enter your email first');
+    return;
+  }
+
+  try {
+    await this.auth.resetPassword(this.email);
+    alert('Password reset email sent!');
+  } catch (e) {
+    console.error('Reset error:', e);
+    alert('Failed to send reset email');
+  }
+}
 }

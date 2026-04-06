@@ -5,7 +5,8 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   authState,
-  User
+  User,
+  getAuth, sendPasswordResetEmail
 } from '@angular/fire/auth';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -38,6 +39,11 @@ export class AuthService {
 
   logout() {
     return signOut(this.auth);
+  }
+
+  async resetPassword(email: string) {
+    const auth = getAuth();
+    return sendPasswordResetEmail(auth, email);
   }
 
   getCurrentUser() {

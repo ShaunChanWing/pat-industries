@@ -107,7 +107,7 @@
 
 <div class="accordion-container">
 
-  <div *ngFor="let emp of employees; let i = index" class="accordion">
+  <div *ngFor="let emp of employees$ | async; let i = index" class="accordion">
 
     <!-- HEADER -->
     <div class="accordion-header" (click)="toggleEmployee(i)">
@@ -128,7 +128,7 @@
         <div class="full"><strong>Address:</strong> {{ emp.address }}</div>
 
         <div><strong>Emergency Contact:</strong> {{ emp.emergencyContactName }}</div>
-        <div><strong>Contact Number:</strong> {{ emp.emergencyContactNumber }}</div>
+        <div><strong>Emergency Contact Number:</strong> {{ emp.emergencyContactNumber }}</div>
 
       </div>
 
